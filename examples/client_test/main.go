@@ -55,10 +55,9 @@ func sendMessages() {
 
 	for i := 1; i <= *messageCount; i++ {
 		text := fmt.Sprintf("Message #%d", i)
-		err = conn.Send(*queueName, "text/plain",
-			[]byte(text), nil)
+		err = conn.Send(*queueName, "text/plain", []byte(text))
 		if err != nil {
-			println("failed to send to server", err)
+			println("failed to send to server", err.Error())
 			return
 		}
 	}
